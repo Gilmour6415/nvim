@@ -7,6 +7,9 @@ vim.g.neovide_theme = "auto"
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
 
+-- disable animations
+vim.g.snacks_animate = false
+
 -- 配置shell 默认为 powershell
 -- Check if 'pwsh' is executable and set the shell accordingly
 if vim.fn.executable("pwsh") == 1 then
@@ -15,6 +18,14 @@ else
   vim.o.shell = "powershell"
 end
 
+-- PYTHON LSP SETTINGS --
+-- LSP Server to use for Python.
+-- Set to "basedpyright" to use basedpyright instead of pyright.
+-- vim.g.lazyvim_python_lsp = "pyright"
+-- Set to "ruff_lsp" to use the old LSP implementation version.
+vim.g.lazyvim_python_ruff = "ruff"
+
+-- TERMINAL SETTINGS --
 -- Setting shell command flags
 vim.o.shellcmdflag =
   "-NoLogo -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.UTF8Encoding]::new();$PSDefaultParameterValues['Out-File:Encoding']='utf8';"
