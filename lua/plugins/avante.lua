@@ -5,7 +5,7 @@ return {
     lazy = false,
     version = false, -- set this if you want to always pull the latest change
     opts = {
-      provider = "deepseek",
+      provider = "qwen",
       vendors = {
         deepseek = {
           __inherited_from = "openai",
@@ -14,6 +14,14 @@ return {
           model = "deepseek-chat",
           max_tokens = 8192,
           disable_tools = true,
+        },
+        qwen = {
+          __inherited_from = "openai",
+          api_key_name = "QWEN_API_KEY",
+          endpoint = "https://dashscope.aliyuncs.com/compatible-mode/v1",
+          model = "qwen-max",
+          max_tokens = 8192,
+          disable_tools = false,
         },
       },
       -- behaviour = {
@@ -48,6 +56,7 @@ return {
           },
         },
       },
+
       {
         -- Make sure to set this up properly if you have lazy=true
         "MeanderingProgrammer/render-markdown.nvim",
@@ -58,4 +67,8 @@ return {
       },
     },
   },
+
+  vim.keymap.set("n", "<leader>an", function()
+    vim.cmd("AvanteChatNew")
+  end, { desc = "avante: new chat session" }),
 }
