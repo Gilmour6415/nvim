@@ -2,8 +2,8 @@ return {
   "keaising/im-select.nvim",
   config = function()
     require("im_select").setup({
-      default_im_select = 0,
-      default_command = "D:\\im-select-cn\\im-select-cn.exe",
+      default_im_select = "com.apple.keylayout.ABC",
+      default_command = "im-select",
 
       -- Restore the default input method state when the following events are triggered
       set_default_events = { "VimEnter", "FocusGained", "InsertLeave", "CmdlineLeave" },
