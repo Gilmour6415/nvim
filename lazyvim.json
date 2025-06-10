@@ -1,6 +1,8 @@
 {
   "extras": [
     "lazyvim.plugins.extras.ai.codeium",
+    "lazyvim.plugins.extras.ai.copilot",
+    "lazyvim.plugins.extras.coding.yanky",
     "lazyvim.plugins.extras.editor.outline",
     "lazyvim.plugins.extras.lang.java",
     "lazyvim.plugins.extras.lang.json",
@@ -8,6 +10,7 @@
     "lazyvim.plugins.extras.lang.tex",
     "lazyvim.plugins.extras.lang.toml",
     "lazyvim.plugins.extras.test.core",
+    "lazyvim.plugins.extras.util.mini-hipatterns",
     "lazyvim.plugins.extras.vscode"
   ],
   "install_version": 7,

@@ -1,6 +1,23 @@
--- Keymaps are automatically loaded on the VeryLazy event
--- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
--- Add any additional keymaps here
--- Open compiler
+-- 快捷键会在 VeryLazy 事件时自动加载
+-- 默认快捷键配置参考: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
+-- 在此处添加额外的快捷键配置
+-- 打开编译器
 vim.api.nvim_set_keymap("n", "<F5>", "<cmd>DapContinue<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<C-F5>", "<cmd>DapTerminate<cr>", { noremap = true, silent = true })
+
+-- 使用 jj 替代 Esc 键
+vim.api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap("v", "jj", "<Esc>", { noremap = true, silent = true })
+
+-- Yanky 插件的配置
+-- 增强复制粘贴功能的快捷键映射
+
+-- 基础粘贴功能：替换默认粘贴行为
+vim.keymap.set({ "n", "x" }, "p", "<Plug>(YankyPutAfter)", { desc = "粘贴到光标后" })
+vim.keymap.set({ "n", "x" }, "P", "<Plug>(YankyPutBefore)", { desc = "粘贴到光标前" })
+vim.keymap.set({ "n", "x" }, "gp", "<Plug>(YankyGPutAfter)", { desc = "粘贴并保持光标位置" })
+vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)", { desc = "粘贴到前面并保持光标位置" })
+
+-- 历史记录导航：在粘贴历史中前后切换
+vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)", { desc = "上一个粘贴项" })
+vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)", { desc = "下一个粘贴项" })
