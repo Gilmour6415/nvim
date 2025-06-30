@@ -6,6 +6,9 @@ return {
     priority = 1000,
     opts = {
       transparent = true,
+      on_colors = function(colors)
+        colors.border = "#323232"
+      end,
     },
   },
   {

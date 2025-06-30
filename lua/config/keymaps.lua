@@ -21,3 +21,9 @@ vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)", { desc = "粘贴�
 -- 历史记录导航：在粘贴历史中前后切换
 vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)", { desc = "上一个粘贴项" })
 vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)", { desc = "下一个粘贴项" })
+
+-- tmux 窗口导航快捷键
+vim.keymap.set("n", "<C-h>", "<Cmd>TmuxNavigateLeft<CR>", {})
+vim.keymap.set("n", "<C-j>", "<Cmd>TmuxNavigateDown<CR>", {})
+vim.keymap.set("n", "<C-k>", "<Cmd>TmuxNavigateUp<CR>", {})
+vim.keymap.set("n", "<C-l>", "<Cmd>TmuxNavigateRight<CR>", {})

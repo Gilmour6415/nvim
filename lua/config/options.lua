@@ -14,4 +14,4 @@ vim.api.nvim_set_option("background", "dark")
 vim.opt.laststatus = 3
 
 -- custom colors
-vim.cmd.highlight({ "WinSeparator", "guifg=#ffffff guibg=#ffffff" })
+vim.cmd.highlight({ "WinSeparator", "guifg=#323232 guibg=#323232" })
