@@ -2,13 +2,20 @@
 return {
   {
     "tokyonight.nvim",
-    lazy = true,
-    priority = 1000,
     opts = {
       transparent = true,
-      on_colors = function(colors)
-        colors.border = "#323232"
-      end,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
+  },
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      transparent_background = true,
     },
   },
   {
@@ -24,8 +31,13 @@ return {
   },
   {
     "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
+    opts = {
+      transparent_background = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
   },
 
   { "titanzero/zephyrium" },
@@ -35,6 +47,8 @@ return {
     "LazyVim/LazyVim",
     opts = {
       colorscheme = "tokyonight-night",
+      -- colorscheme = "solarized-osaka",
+      -- colorscheme = "catppuccin",
     },
   },
 }
