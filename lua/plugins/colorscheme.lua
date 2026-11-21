@@ -1,13 +1,22 @@
 -- all colorschemes are loaded here
+local function get_term_program()
+  return os.getenv("TERM_PROGRAM")
+end
+
+local is_ghostty = get_term_program() == "ghostty"
+local default_colorscheme = "moonfly"
+local ghostty_colorscheme = "moonfly"
+local colorscheme = is_ghostty and ghostty_colorscheme or default_colorscheme
+
 return {
   {
     "tokyonight.nvim",
     opts = {
-      transparent = true,
-      styles = {
+      transparent = is_ghostty,
+      styles = is_ghostty and {
         sidebars = "transparent",
         floats = "transparent",
-      },
+      } or {},
     },
   },
   {
@@ -15,7 +24,7 @@ return {
     lazy = false,
     priority = 1000,
     opts = {
-      transparent_background = true,
+      transparent_background = is_ghostty,
     },
   },
   {
@@ -23,7 +32,7 @@ return {
     lazy = true,
     priority = 1000,
     opts = {
-      transparent = true,
+      transparent = is_ghostty,
     },
   },
   {
@@ -32,13 +41,24 @@ return {
   {
     "catppuccin/nvim",
     opts = {
-      transparent_background = true,
-      styles = {
+      transparent_background = is_ghostty,
+      styles = is_ghostty and {
         sidebars = "transparent",
         floats = "transparent",
-      },
+      } or {},
     },
   },
+  {
+    "bluz71/vim-moonfly-colors",
+    name = "moonfly",
+    lazy = false,
+    priority = 1000,
+    init = function()
+      vim.g.moonflyTransparent = true
+    end,
+  },
+  { "datsfilipe/vesper.nvim" },
+  { "luisiacc/the-matrix.nvim" },
 
   { "titanzero/zephyrium" },
   { "tanvirtin/monokai.nvim" },
@@ -46,9 +66,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "tokyonight-night",
-      -- colorscheme = "solarized-osaka",
-      -- colorscheme = "catppuccin",
+      colorscheme = colorscheme,
     },
   },
 }

@@ -7,6 +7,7 @@ vim.api.nvim_set_keymap("n", "<C-F5>", "<cmd>DapTerminate<cr>", { noremap = true
 
 -- 使用 jj 替代 Esc 键
 vim.api.nvim_set_keymap("i", "jj", "<Esc>", { noremap = true, silent = true })
+vim.keymap.set({ "n", "i", "v" }, "<D-s>", "<cmd>w<cr>", { desc = "保存文件 (Cmd+s)" })
 -- vim.api.nvim_set_keymap("v", "jj", "<Esc>", { noremap = true, silent = true })
 
 -- Yanky 插件的配置
@@ -21,20 +22,11 @@ vim.keymap.set({ "n", "x" }, "gP", "<Plug>(YankyGPutBefore)", { desc = "粘贴�
 -- 历史记录导航：在粘贴历史中前后切换
 vim.keymap.set("n", "<c-p>", "<Plug>(YankyPreviousEntry)", { desc = "上一个粘贴项" })
 vim.keymap.set("n", "<c-n>", "<Plug>(YankyNextEntry)", { desc = "下一个粘贴项" })
--- tmux 窗口导航快捷键
-vim.keymap.set("n", "<C-h>", "<Cmd>TmuxNavigateLeft<CR>", {})
-vim.keymap.set("n", "<C-j>", "<Cmd>TmuxNavigateDown<CR>", {})
-vim.keymap.set("n", "<C-k>", "<Cmd>TmuxNavigateUp<CR>", {})
-vim.keymap.set("n", "<C-l>", "<Cmd>TmuxNavigateRight<CR>", {})
+-- Ctrl+hjkl 导航由 config/herdr_navigator.lua（经 tmux_navigator 插件）统一接管
 
--- 使用 leader + o 开启/关闭 copilot
-vim.keymap.set("n", "<leader>o", "<cmd>Copilot toggle<cr>", { desc = "Toggle Copilot" })
+-- 终端模式下连续两次 Esc 等同于 Ctrl-\ Ctrl-n（退出终端模式）
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Double Esc to exit terminal mode" })
 
--- CodeCompanionActions AI
-vim.keymap.set({ "n", "v" }, "<leader>a", "", { desc = "CodeCompanionChat" })
-vim.keymap.set({ "n", "v" }, "<Leader>ap", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-vim.keymap.set({ "n", "v" }, "<Leader>aa", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
-
--- Expand 'cc' into 'CodeCompanion' in the command line
-vim.cmd([[cab cc CodeCompanion]])
+-- Ctrl+hjkl 无缝导航（vim 分屏 + herdr pane）。必须放在文件末尾：
+-- LazyVim 在 VeryLazy 加载完自带 keymaps 后才加载本文件，此处覆盖才能生效。
+require("config.herdr_navigator")

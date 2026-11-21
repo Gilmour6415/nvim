@@ -1,5 +1,8 @@
 -- 在此添加自定义选项
 vim.o.guifont = "Cousine Nerd Font Mono:h11"
+
+-- 默认关闭代码 conceal
+vim.o.conceallevel = 0
 vim.g.neovide_transparency = 0.9
 vim.g.neovide_theme = "auto"
 -- disable animations
@@ -13,6 +16,9 @@ vim.opt.laststatus = 3
 
 -- warp settings
 vim.opt.wrap = true
+
+-- 设置代码宽度提示线（配合 deadcolumn.nvim 插件）
+vim.o.colorcolumn = "120"
 
 -- nvr configs for vimtex
 local function set_server_name()
